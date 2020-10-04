@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  app:
+    container_name: myproyect-docker
+    image: myproyect-docker
+    build: ./
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=myproyect
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

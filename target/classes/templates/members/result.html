@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<div th:replace="/fragments/header :: header-css" />
+	<title>Resultado de la acción crear miembro</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div th:replace="/fragments/header :: header"/>
+		<div th:replace="/fragments/membersmenu :: menu" />
+	
+		<div class="alert alert-success text-center" role="alert">
+		  Miembro agregado correctamente!
+		</div>
+		<div class="card text-center" style="width: 18rem;">
+		  <img class="card-img-top" src="../assets/user-icon.png" alt="Card image cap">
+		  <div class="card-body">
+		    <h5 th:text="'name: ' + ${member.name}" class="card-title"/>
+		    <p th:text="'email: ' + ${member.email}"/>
+		    <a href="#" class="btn btn-primary">Editar</a>
+		  </div>
+		</div>
+    </div>
+	
+	<div th:replace="/fragments/footer :: footer" />
+</body>
+</html>

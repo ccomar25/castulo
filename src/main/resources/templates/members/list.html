@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<div th:replace="/fragments/header :: header-css"/>
+		<title>Lista de miembros</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+		  	<div th:replace="/fragments/header :: header"/>
+			<div th:replace="/fragments/membersmenu :: menu" />
+				<table class="table">
+					<thead class="thead-light">
+			            <tr>
+			            	<th scope="col">Id</th>
+			                <th scope="col">Nombre</th>
+			                <th scope="col">email</th>
+			                <th scope="col">Edicion</th>
+			            </tr>
+			        </thead>
+		            <tbody>
+			            <tr th:each="member : ${members}">
+			            	<td th:text="${member.id}">Nombre</td>
+			                <td th:text="${member.name}">Nombre</td>
+			                <td th:text="${member.email}">email</td>
+			                <td>
+			                	<a th:href="@{/members/update/{id}(id=${member.id})}">Editar</a>/
+			                	<a th:href="@{/members/delete/{id}(id=${member.id})}">Eliminar</a>
+			                </td>
+			            </tr>
+		            </tbody>
+		        </table>
+		  <div th:replace="/fragments/footer :: footer"/>
+		</div>	
+	</body>
+</html>

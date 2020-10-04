@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header-css">
+<!-- Required meta tags -->
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS  -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<!-- Custom CSS  -->
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+	<div th:fragment="header">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="#">Menu principal</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a></li>
+					<li sec:authorize="${isAuthenticated()}" class="nav-item"><a class="nav-link" href="/members">Miembros</a></li>
+					<li sec:authorize="${isAuthenticated()}" class="nav-item"><a class="nav-link" href="/roles">Roles</a></li>
+					<li sec:authorize="${isAuthenticated()}" class="nav-item"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Otras opciones</a></li>
+				</ul>
+				<div sec:authorize="${isAuthenticated()}">
+				  <a th:href="@{/logout}">Log out</a>
+				</div>
+				<div sec:authorize="${isAnonymous()}">
+				  <a th:href="@{/login}">Log in</a>
+				</div>
+				
+			</div>
+</nav>
+</div>
+</body>
+</html>

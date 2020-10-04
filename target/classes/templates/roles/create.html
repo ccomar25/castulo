@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<div th:replace="/fragments/header :: header-css" />
+	<title>Administración de Roles</title>
+</head>
+<body>
+	<div class="container-fluid">
+	<div th:replace="/fragments/header :: header"/>
+	<div th:replace="/fragments/rolesmenu :: menu" />
+	<form action="#" th:action="@{/roles/create}" th:object="${role}" method="post">
+		<div class="form-group">
+			<label>Nombre</label>
+    		<input type="text" class="form-control" th:field="*{name}" />
+    	</div>
+        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="reset" class="btn btn-secondary" value="Reset" />
+    </form>
+    </div>
+	<div th:replace="/fragments/footer :: footer" />
+</body>
+</html>
